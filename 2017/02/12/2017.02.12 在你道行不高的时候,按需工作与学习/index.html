@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-hk">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="一七年二月,情感,学习感悟,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="吹毛求疵 就是个SB我是一个近乎完美主义者与折腾党，在之前的学习过程中，喜欢深究一些方法和原理总是喜欢找最优解,最完美的写法(我真是个傻逼)。举个例子：简单的tab切换，非得使用构造函数+原型模式来实现，之后还用上了继承(没成功)，不够后来发现继承中是不能有参类继承的的；Javascript无参数和有参数类继承问题解决方法  详情&amp;gt;&amp;gt;喜欢把一些简单的例子复杂化;虽然有收获(因为之前没学">
+<meta name="keywords" content="一七年二月,情感,学习感悟">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在你道行不高的时候,按需工作与学习">
+<meta property="og:url" content="http://yoursite.com/2017/02/12/2017.02.12 在你道行不高的时候,按需工作与学习/index.html">
+<meta property="og:site_name" content="胭脂不倦?">
+<meta property="og:description" content="吹毛求疵 就是个SB我是一个近乎完美主义者与折腾党，在之前的学习过程中，喜欢深究一些方法和原理总是喜欢找最优解,最完美的写法(我真是个傻逼)。举个例子：简单的tab切换，非得使用构造函数+原型模式来实现，之后还用上了继承(没成功)，不够后来发现继承中是不能有参类继承的的；Javascript无参数和有参数类继承问题解决方法  详情&amp;gt;&amp;gt;喜欢把一些简单的例子复杂化;虽然有收获(因为之前没学">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:updated_time" content="2017-07-21T14:40:24.242Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在你道行不高的时候,按需工作与学习">
+<meta name="twitter:description" content="吹毛求疵 就是个SB我是一个近乎完美主义者与折腾党，在之前的学习过程中，喜欢深究一些方法和原理总是喜欢找最优解,最完美的写法(我真是个傻逼)。举个例子：简单的tab切换，非得使用构造函数+原型模式来实现，之后还用上了继承(没成功)，不够后来发现继承中是不能有参类继承的的；Javascript无参数和有参数类继承问题解决方法  详情&amp;gt;&amp;gt;喜欢把一些简单的例子复杂化;虽然有收获(因为之前没学">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/12/2017.02.12 在你道行不高的时候,按需工作与学习/">
+
+
+
+
+
+  <title>在你道行不高的时候,按需工作与学习 | 胭脂不倦?</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">胭脂不倦?</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            關於
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/12/2017.02.12 在你道行不高的时候,按需工作与学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胭脂好">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胭脂不倦?">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在你道行不高的时候,按需工作与学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-02-12T03:33:33+08:00">
+                2017-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="吹毛求疵-就是个SB"><a href="#吹毛求疵-就是个SB" class="headerlink" title="吹毛求疵 就是个SB"></a>吹毛求疵 就是个SB</h3><p>我是一个近乎完美主义者与折腾党，在之前的学习过程中，喜欢深究一些方法和原理总是喜欢找最优解,最完美的写法(我真是个傻逼)。举个例子：简单的tab切换，非得使用构造函数+原型模式来实现，之后还用上了继承(没成功)，不够后来发现继承中是不能有参类继承的的；<a href="http://www.jb51.net/article/61594.htm" target="_blank" rel="noopener">Javascript无参数和有参数类继承问题解决方法  详情&gt;&gt;</a><br><br>喜欢把一些简单的例子复杂化;虽然有收获(因为之前没学到,但是发现是挺折腾的,现在看来似乎是没必要,简直就是吹毛求疵!!吹毛求疵!!吹毛求疵!!)</p>
+<h4 id="羡慕"><a href="#羡慕" class="headerlink" title="羡慕??"></a>羡慕??</h4><p>最近看见一个之前在知乎上关注的前端同学发现人家进步了很多,然后内心各种奔腾要以人家为目标;巴拉巴拉心里各种意淫;心里想我想要试着自己写一个看看!!!看到几个动画效果什么的分页又觉得其实可以用jq实现,甚至乎css3都可以!之前道听途说jq过时垃圾我又盲目跟风了,可是自己还没学MV*框架,自己又想拿框架来实现,oh,my god!!!</p>
+<h3 id="为什么我们需要MVC？"><a href="#为什么我们需要MVC？" class="headerlink" title="为什么我们需要MVC？"></a>为什么我们需要MVC？</h3><p>不知道该干什么,纠结以及混乱之际,一个文章警醒了我<a href="http://blog.starkwang.com/2015/05/15/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81MVC%EF%BC%9F/" target="_blank" rel="noopener"> 引用 - 为什么我们需要MVC？</a>; 其次,结合自己的能力程度;目前首先将需求完成,再优化;</p>
+<blockquote>
+<p>什么情况下适用MVC</p>
+</blockquote>
+<p>首先我们要知道，MVC并不是万能的，它不会适用于全部的场景，那么它适用于什么情况呢？</p>
+<p>如果你需要在前端上实现一个涉及到状态转换、多重数据交互等一系列功能的应用（例如web版的印象笔记、任何在线邮箱），那么MVC或许适合你。</p>
+<p>如果你只是需要一个展示性质的网页（例如大多数的新闻网站），不会有太多的事件、DOM转变，这个时候用使用MVC或许反而加大了工作量以及复杂程度。</p>
+<h3 id="自己一个小计划"><a href="#自己一个小计划" class="headerlink" title="自己一个小计划"></a>自己一个小计划</h3><p>结合自身情况(还没找到工作,先以找工作为主)务必完成一个再能做下一个</p>
+<ol>
+<li>学习vue.js   (要求写基础demo)</li>
+<li>学习webpack  (要求掌握接近熟练)</li>
+<li>写一个个人简历网站(参考那个前段同学写的)顺便把某些东西写成插件啊你要</li>
+<li>….之后要学什么就到时候再写一篇文章吧</li>
+</ol>
+<h5 id="我马上滚回去学vue-js了-胭脂好2017-02-12"><a href="#我马上滚回去学vue-js了-胭脂好2017-02-12" class="headerlink" title="我马上滚回去学vue.js了  胭脂好2017.02.12"></a>我马上滚回去学vue.js了  胭脂好2017.02.12</h5>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/一七年二月/" rel="tag"># 一七年二月</a>
+          
+            <a href="/tags/情感/" rel="tag"># 情感</a>
+          
+            <a href="/tags/学习感悟/" rel="tag"># 学习感悟</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/08/2017.02.08 有些折腾是值得的/" rel="next" title="有些折腾是值得的">
+                <i class="fa fa-chevron-left"></i> 有些折腾是值得的
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/05/2017.08.05 一七年七、八月近况/" rel="prev" title="一七年七、八月近况">
+                一七年七、八月近况 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/head.jpg" alt="胭脂好">
+            
+              <p class="site-author-name" itemprop="name">胭脂好</p>
+              <p class="site-description motion-element" itemprop="description">知行合一</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#吹毛求疵-就是个SB"><span class="nav-number">1.</span> <span class="nav-text">吹毛求疵 就是个SB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#羡慕"><span class="nav-number">1.1.</span> <span class="nav-text">羡慕??</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么我们需要MVC？"><span class="nav-number">2.</span> <span class="nav-text">为什么我们需要MVC？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自己一个小计划"><span class="nav-number">3.</span> <span class="nav-text">自己一个小计划</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#我马上滚回去学vue-js了-胭脂好2017-02-12"><span class="nav-number">3.0.1.</span> <span class="nav-text">我马上滚回去学vue.js了  胭脂好2017.02.12</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胭脂好</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

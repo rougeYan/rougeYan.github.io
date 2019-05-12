@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-hk">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="一八年三月,教程,linux,git,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="服务器搭建git私人仓库(弱智级教程) 本机配置   搬瓦工 CentOS6.8 系统  最穷人配置   第一步走流程 转发自CentOS下搭建Git服务器(基于SSH协议)  CentOS下搭建Git服务器(基于SSH协议) 1，安装Git所需依赖包 # yum install curl-devel expat-devel gettext-devel openssl-devel zlib-dev">
+<meta name="keywords" content="一八年三月,教程,linux,git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(精!弱智级教程)服务器搭建git私人仓库">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/2018.03.18 (弱智级教程)服务器搭建git私人仓库/index.html">
+<meta property="og:site_name" content="胭脂不倦?">
+<meta property="og:description" content="服务器搭建git私人仓库(弱智级教程) 本机配置   搬瓦工 CentOS6.8 系统  最穷人配置   第一步走流程 转发自CentOS下搭建Git服务器(基于SSH协议)  CentOS下搭建Git服务器(基于SSH协议) 1，安装Git所需依赖包 # yum install curl-devel expat-devel gettext-devel openssl-devel zlib-dev">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:updated_time" content="2018-03-27T08:31:26.625Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(精!弱智级教程)服务器搭建git私人仓库">
+<meta name="twitter:description" content="服务器搭建git私人仓库(弱智级教程) 本机配置   搬瓦工 CentOS6.8 系统  最穷人配置   第一步走流程 转发自CentOS下搭建Git服务器(基于SSH协议)  CentOS下搭建Git服务器(基于SSH协议) 1，安装Git所需依赖包 # yum install curl-devel expat-devel gettext-devel openssl-devel zlib-dev">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/18/2018.03.18 (弱智级教程)服务器搭建git私人仓库/">
+
+
+
+
+
+  <title>(精!弱智级教程)服务器搭建git私人仓库 | 胭脂不倦?</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">胭脂不倦?</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            關於
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/2018.03.18 (弱智级教程)服务器搭建git私人仓库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胭脂好">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胭脂不倦?">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(精!弱智级教程)服务器搭建git私人仓库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-03-18T22:22:22+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="服务器搭建git私人仓库-弱智级教程"><a href="#服务器搭建git私人仓库-弱智级教程" class="headerlink" title="服务器搭建git私人仓库(弱智级教程)"></a>服务器搭建git私人仓库(弱智级教程)</h2><blockquote>
+<p>本机配置</p>
+</blockquote>
+<ul>
+<li><p>搬瓦工 CentOS6.8 系统</p>
+</li>
+<li><p>最穷人配置</p>
+</li>
+</ul>
+<h2 id="第一步走流程"><a href="#第一步走流程" class="headerlink" title="第一步走流程"></a>第一步走流程</h2><ul>
+<li>转发自<a href="https://www.cnblogs.com/startcaft/p/6693951.html" target="_blank" rel="noopener">CentOS下搭建Git服务器(基于SSH协议)</a></li>
+</ul>
+<p>CentOS下搭建Git服务器(基于SSH协议)</p>
+<p>1，安装Git所需依赖包</p>
+<pre><code># yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+# yum install gcc perl-ExtUtils-MakeMaker
+</code></pre><p>2，卸载CentOS自带的git</p>
+<pre><code># yum remove git     
+</code></pre><p>3，下载较新Git版本</p>
+<pre><code># mkdir /usr/src/tools
+# cd /usr/src/tools
+# wget https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.gz
+# tar -zxvf git-2.8.3.tar
+</code></pre><p>4，安装Git并添加到环境变量中，Git安装路径为/usr/local/git</p>
+<pre><code># cd git-2.8.3.tar
+# make prefix=/usr/local/git all
+# make prefix=/usr/local/git install
+# echo &quot;export PATH=$PATH:/usr/local/git/bin&quot; &gt;&gt; /etc/bashrc
+# source /etc/bashrc
+
+完毕，查看git版本号
+# git --version 
+</code></pre><p>5，创建用户git，用来运行Git服务</p>
+<pre><code># adduser git
+# su git
+# cd ~
+# mkdir .ssh
+# touch authorized_keys
+在git用户的家目录（/home/git/）创建一个.ssh的目录，将协同工作人员的SSH公钥添加到该目录的authorized_keys文件中。
+</code></pre><p>6，收录客户端的SSH公钥到/home/git/.ssh/authorized_keys文件中<br>     客户端使用命令 ssh-keygen -t rsa -C “你的email地址” ，会在~/.ssh/id_rsa.pub生成SSH公钥，复制给管理员即可。　</p>
+<p>7，配置服务器端ssh服务</p>
+<blockquote>
+<p>注意是把系埋你三项前面的# 给去掉 #是注释符; </p>
+</blockquote>
+<pre><code># vim /etc/ssh/sshd_config
+RSAAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile /home/git/.ssh/authorized_keys #你的authorized_keys所在路径
+</code></pre><ul>
+<li>注意:  这里要检查一下当前的账户是谁?git 还是root</li>
+<li>如果是 root 请输入 su git 进行切换用户</li>
+<li>另外: 最好加入git 没有密码 请重置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root登陆：</span><br><span class="line"></span><br><span class="line">  passwd  user</span><br><span class="line"></span><br><span class="line">  new password： xxx</span><br><span class="line"></span><br><span class="line">  confirm new password：xxx</span><br></pre></td></tr></table></figure>
+<p>8，初始化git仓库（裸库）</p>
+<pre><code># cd /home/git 
+# mkdir project.git
+# git init --bare project.git
+</code></pre><p>9，禁用git用户shell登录</p>
+<pre><code># vim /etc/passwd
+git:x:1001:1001:,,,:/home/git:/bin/bash
+改为
+git:x:1001:1001:,,,:/home/git:/usr/local/git/bin/git-shell
+</code></pre><p>现在客户端可以通过 git clone 命令克隆远程仓库了，注意这里有些问题需要注意，SSH对公钥，私钥的权限和所有权的要求是非常严格的，总结如下：</p>
+<p>1，下面两个目录的所有权必须是git（上面创建的git用户），所属组也应该是git，权限必须为700<br>     ①/home/git     # chmod 755 /home/git<br>     ②/home/git/.ssh     # chmod 700 /home/git/.ssh<br>2，公钥文件的 所有权必须是git，所属组 也必须是git，权限必须是644<br>     ①/home/git/.ssh/authorized_keys #chmod 644 /home/git/.ssh/authorized_keys<br>3, 对于仓库 也要修改 权限否则不能进行push等操作;</p>
+<p>如果权限不对，会造成不能正常登录，报错信息：Permission denied (publickey,gssapi-with-mic…..)</p>
+<h2 id="第二步-git-clone-你的远程仓库"><a href="#第二步-git-clone-你的远程仓库" class="headerlink" title="第二步 git clone 你的远程仓库"></a>第二步 git clone 你的远程仓库</h2><p>部分转自:<a href="https://www.jianshu.com/p/6db06489ba3d" target="_blank" rel="noopener">让我来教你如何搭建属于自己的git服务器</a></p>
+<p>至此，我们已经在服务器上完成了一个project.git仓库的创建。我们可以在客户端clone该仓库：</p>
+<p>网上很多教程都是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git clone git@192.168.1.1/homt/git/project.git</span><br><span class="line"></span><br><span class="line">// 然后报错: 说 Port 22 :connection refused</span><br><span class="line"></span><br><span class="line">// 一下谈论是自己不知道怎么敲代码 敲出来的谈论,</span><br><span class="line">// 首先我承认 我菜啊 不会linux啊;</span><br><span class="line">// 他妈的这是瞎J8骗人的 你根本没有考虑端口的问题 这个问题搞了我一天</span><br><span class="line">// 为什么要考虑端口的问题?</span><br><span class="line">// 你本来Xshell连接就通过ssh连接啊</span><br><span class="line">// ssh 启动其实就是主机面板的SSH PORT作为默认端口;</span><br><span class="line">// 因为有些VPS 的默认SSH Port端口不是 22 因为安全问题默认是随即数, 搬瓦工就是这样子;</span><br><span class="line">// 我前端; 我垃圾; 都怪我linux基础不好 @_@</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">正确的地址应该是</span><br><span class="line"></span><br><span class="line">git clone 刚刚创建的用户名称@你的服务器IP:新仓库名称.git</span><br><span class="line"></span><br><span class="line">更加正确的是 加上协议 和端口号</span><br><span class="line"></span><br><span class="line">git clone ssh://刚刚创建的用户名称@你的服务器IP:端口号/路径/新仓库名称.git</span><br><span class="line"></span><br><span class="line">git clone ssh://用户名@主机IP(或域名):端口号/git目录地址</span><br><span class="line"></span><br><span class="line">例如:</span><br><span class="line"></span><br><span class="line">git clone ssh://git@192.168.1.1:8888/home/git/project.git</span><br><span class="line"></span><br><span class="line">当你成功提示 你clone 一个空仓库的时候,</span><br><span class="line">恭喜你可以跑到第三步了;</span><br><span class="line"></span><br><span class="line">## 将我们的代码push到远程仓库;</span><br><span class="line"></span><br><span class="line">其实你不是搞运维,或者什么得,更应该借助一些工具去进行版本库控制;</span><br><span class="line"></span><br><span class="line">这里我推荐sourcetree 这个软件</span><br><span class="line"></span><br><span class="line">免除命令行困扰;</span><br><span class="line"></span><br><span class="line">我们用sourcetree打开git clone的项目;</span><br><span class="line"></span><br><span class="line">新建一个test.txt</span><br><span class="line"></span><br><span class="line">走流程:</span><br><span class="line"></span><br><span class="line">git add ~</span><br><span class="line"></span><br><span class="line">git commit -m &apos;firsttime&apos;</span><br><span class="line"></span><br><span class="line">git push ssh://git@192.168.1.1:8888/home/git/project.git</span><br><span class="line"></span><br><span class="line">一般来说linux权限没有问题就可以直接push;</span><br><span class="line"></span><br><span class="line">假如出现下面错误:</span><br></pre></td></tr></table></figure>
+<p>$ git push origin master<br>Counting objects: 3, done.<br>Writing objects: 100% (3/3), 211 bytes | 211.00 KiB/s, done.<br>Total 3 (delta 0), reused 0 (delta 0)<br>remote: error: insufficient permission for adding an object to repository database ./objects<br>remote: fatal: failed to write object<br>error: remote unpack failed: unpack-objects abnormal exit<br>To ssh://95.163.195.208:29105/home/git/project.git<br> ! [remote rejected] master -&gt; master (unpacker error)<br>error: failed to push some refs to ‘ssh:<a href="mailto://git@95.163.195.208" target="_blank" rel="noopener">//git@95.163.195.208</a>:29105/home/git/project.git’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">Counting objects: 3, done.</span><br><span class="line">Writing objects: 100% (3/3), 211 bytes | 211.00 KiB/s, done.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">remote: error: cannot lock ref &apos;refs/heads/master&apos;: Unable to create &apos;/hoproject.git/refs/heads/master.lock&apos;: Permission denied</span><br><span class="line">To ssh://95.163.195.208:29105/home/git/project.git</span><br><span class="line"> ! [remote rejected] master -&gt; master (failed to update ref)</span><br><span class="line">error: failed to push some refs to &apos;ssh://git@95.163.195.208:29105/home/gect.git&apos;</span><br></pre></td></tr></table></figure></p>
+<p>//仓库的权限权限有问题;</p>
+<p>假定test.git 是服务器端的仓库文件</p>
+<p>cd到test.git的上一级目录,</p>
+<p>然后执行 git init –bare test.git</p>
+<p>此时候创建了一个git裸仓库, 没有工作区<br>因为服务器上的仓库只做共享用,用户不可以直接登陆到服务器上去修改工作区;</p>
+<p>然后修改这个仓库的owner 为git</p>
+<p>在root权限下:  不要切换git用户;</p>
+<p>sudo chown -R git:git test.git</p>
+<p>//命令行的意思<br>chown –R liufan:liufan-desktop rootfs<br>// 将目录rootfs文件夹及子目录的所有者和组更改为用户liufan和组liufan-desktop</p>
+<p>但有一个疑惑? </p>
+<p>再sourceTree中;</p>
+<p>PC - 注册了公匙: 并没有输入密码 在工具 =&gt; 选项 =&gt; 一般  SSH客户端配置 要选择OpenSSH  选择公匙 才能进行正常的拉取, 获取操作;</p>
+<p>笔记本 -没有注册公匙: 但是输入过一次密码 是 linux git帐号的密码; 就不用再上面OpenSSH 选择Putty/Plink 就可以进行相关操作了; 不知道为什么; 不管怎样 反正只要能正常跑流程都可以的,</p>
+<p>我又不是专业后端 @_@`!</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p> git remote add origin <a href="mailto:git@95.163.195.208" target="_blank" rel="noopener">git@95.163.195.208</a>:/home/git/project.git</p>
+<p> git remote set-url origin ssh://95.163.195.208:/home/git/project.git</p>
+<p><a href="https://www.jianshu.com/p/0c939f63af41" target="_blank" rel="noopener">手把手教你搭建git服务器</a></p>
+<p><a href="https://juejin.im/post/5a2696fcf265da43305e5423" target="_blank" rel="noopener">在个人服务器上搭建git服务，创建属于自己的私人仓库</a></p>
+<p><a href="https://blog.csdn.net/abc213070247/article/details/39077643" target="_blank" rel="noopener">git push 错误总结</a></p>
+<p><a href="https://blog.csdn.net/everything1209/article/details/53159249" target="_blank" rel="noopener">Git服务器搭建</a></p>
+<p><a href="https://www.cnblogs.com/Totooria-Hyperion/p/5473671.html" target="_blank" rel="noopener">在自己的VPS上创建GIT版本库并与本地同步,以及通过GIT自动部署代码到VPS上</a></p>
+<p><a href="https://blog.csdn.net/moqiang02/article/details/39609311" target="_blank" rel="noopener">创建局域网内远程git仓库，并将本地仓库push推到远程仓库中</a></p>
+<p><a href="https://segmentfault.com/a/1190000007686496" target="_blank" rel="noopener">Git 本地仓库和裸仓库</a></p>
+<p><a href="https://segmentfault.com/q/1010000004683286" target="_blank" rel="noopener">git init 和 git init –bare 的区别？</a></p>
+<p><a href="http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/" target="_blank" rel="noopener">什么是纯粹的git存储库？</a></p>
+<p><a href="https://blog.csdn.net/qq_34284638/article/details/70154557" target="_blank" rel="noopener">本地git仓库推送到服务器自建的git仓库实现目录文件同步教程[自整理]</a></p>
+<h3 id="sourceTree-拉取问题"><a href="#sourceTree-拉取问题" class="headerlink" title="sourceTree 拉取问题"></a>sourceTree 拉取问题</h3><p><a href="https://stackoverflow.com/questions/36149862/gitlab-too-many-authentication-failures-for-git" target="_blank" rel="noopener">Gitlab - Too many authentication failures for git</a></p>
+<h3 id="教你你强行改掉-搬瓦工-重置时候默认的主机面板"><a href="#教你你强行改掉-搬瓦工-重置时候默认的主机面板" class="headerlink" title="教你你强行改掉 搬瓦工 重置时候默认的主机面板;"></a>教你你强行改掉 搬瓦工 重置时候默认的主机面板;</h3><p>以下教程不负责:纯自己XJ8搞,不确保正确性;</p>
+<ul>
+<li>我的主机面板每次重新安装 OS 都是默认 29105 端口,</li>
+<li>无法手动更改</li>
+<li>我也不知道为什么 就是有一次 没心机 XJ8 弄发现居然可以改掉主机面板的每次重置端口</li>
+<li>下面赋一个强行更改主机面板ssh的端口教程</li>
+<li>转自 <a href="https://superuser.com/questions/977104/ssh-connect-to-host-localhost-port-22-connection-refused" target="_blank" rel="noopener">SSH :connect to host localhost port 22: Connection refused</a></li>
+<li>不得不说一下 stack overflow还是强大</li>
+</ul>
+<p>// vi /etc/ssh/sshd_config<br>// 把原来所有的文件复制到本地<br>// 把下面代码复制到 /etc/ssh/sshd_config 最下面<br>// 然后 输入重启ssh 服务  service sshd start<br>// 当前会报错 报红<br>// 然后你刷新你的面板控制器发现 SSH Port 已经发生变化.<br>// 再把原来正确的文件夹 内容复制上去,<br>// 并且找到Port 这一行 改成你想要的主机面板端口就可以了;<br>// 再重启ssh 服务  service sshd start</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Port 1234 //你想要的默认主板端口</span><br><span class="line">Protocol 2</span><br><span class="line">HostKey /etc/ssh/ssh_host_rsa_key</span><br><span class="line">HostKey /etc/ssh/ssh_host_dsa_key</span><br><span class="line">HostKey /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line">HostKey /etc/ssh/ssh_host_ed25519_key</span><br><span class="line">UsePrivilegeSeparation yes</span><br><span class="line">KeyRegenerationInterval 3600</span><br><span class="line">ServerKeyBits 1024</span><br><span class="line">SyslogFacility AUTH</span><br><span class="line">LogLevel INFO</span><br><span class="line">LoginGraceTime 120</span><br><span class="line">PermitRootLogin no</span><br><span class="line">StrictModes yes</span><br><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line">IgnoreRhosts yes</span><br><span class="line">RhostsRSAAuthentication no</span><br><span class="line">HostbasedAuthentication no</span><br><span class="line">PermitEmptyPasswords no</span><br><span class="line">ChallengeResponseAuthentication no</span><br><span class="line">X11Forwarding yes</span><br><span class="line">X11DisplayOffset 10</span><br><span class="line">PrintMotd no</span><br><span class="line">PrintLastLog yes</span><br><span class="line">TCPKeepAlive yes</span><br><span class="line">AcceptEnv LANG LC_*</span><br><span class="line">Subsystem sftp /usr/lib/openssh/sftp-server</span><br><span class="line">UsePAM yes</span><br><span class="line">ClientAliveInterval 30</span><br><span class="line">ClientAliveCountMax 99999</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/一八年三月/" rel="tag"># 一八年三月</a>
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/08/2018.03.08 nginx学习记录及安装教程/" rel="next" title="Linux nginx 学习记录;">
+                <i class="fa fa-chevron-left"></i> Linux nginx 学习记录;
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/10/2018.04.10恶补CSS系列(一)/" rel="prev" title="恶补CSS系列(一)">
+                恶补CSS系列(一) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/head.jpg" alt="胭脂好">
+            
+              <p class="site-author-name" itemprop="name">胭脂好</p>
+              <p class="site-description motion-element" itemprop="description">知行合一</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器搭建git私人仓库-弱智级教程"><span class="nav-number">1.</span> <span class="nav-text">服务器搭建git私人仓库(弱智级教程)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步走流程"><span class="nav-number">2.</span> <span class="nav-text">第一步走流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步-git-clone-你的远程仓库"><span class="nav-number">3.</span> <span class="nav-text">第二步 git clone 你的远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后续"><span class="nav-number">4.</span> <span class="nav-text">后续</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sourceTree-拉取问题"><span class="nav-number">4.1.</span> <span class="nav-text">sourceTree 拉取问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#教你你强行改掉-搬瓦工-重置时候默认的主机面板"><span class="nav-number">4.2.</span> <span class="nav-text">教你你强行改掉 搬瓦工 重置时候默认的主机面板;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胭脂好</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-hk">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="一八年四月,css,移动端,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTML,css,javascript是前端三板斧 过去一段时间里面,我过分注重javascript(虽然现在也不咋样,哭泣脸 😭😭😭 ),闭包,es6,OOP (面向对象) ,框架 (react,vue),http协议,等知识,忽略了太多的css基础,布局,等知识,导致有些基础的题目甚至答不上来,错过一些好的工作岗位,迫切总结自己薄弱项系列.  恶补CSS系列之CSS选择器优先顺序 id选">
+<meta name="keywords" content="一八年四月,css,移动端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="恶补CSS系列(二)">
+<meta property="og:url" content="http://yoursite.com/2018/04/11/2018.04.11恶补CSS系列(二)/index.html">
+<meta property="og:site_name" content="胭脂不倦?">
+<meta property="og:description" content="HTML,css,javascript是前端三板斧 过去一段时间里面,我过分注重javascript(虽然现在也不咋样,哭泣脸 😭😭😭 ),闭包,es6,OOP (面向对象) ,框架 (react,vue),http协议,等知识,忽略了太多的css基础,布局,等知识,导致有些基础的题目甚至答不上来,错过一些好的工作岗位,迫切总结自己薄弱项系列.  恶补CSS系列之CSS选择器优先顺序 id选">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:image" content="http://cdn.alloyteam.com/wp-content/uploads/2016/05/%E4%BC%AA%E7%B1%BB.png">
+<meta property="og:image" content="http://cdn.alloyteam.com/wp-content/uploads/2016/05/%E4%BC%AA%E5%85%83%E7%B4%A0.png">
+<meta property="og:updated_time" content="2018-04-11T06:47:04.789Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="恶补CSS系列(二)">
+<meta name="twitter:description" content="HTML,css,javascript是前端三板斧 过去一段时间里面,我过分注重javascript(虽然现在也不咋样,哭泣脸 😭😭😭 ),闭包,es6,OOP (面向对象) ,框架 (react,vue),http协议,等知识,忽略了太多的css基础,布局,等知识,导致有些基础的题目甚至答不上来,错过一些好的工作岗位,迫切总结自己薄弱项系列.  恶补CSS系列之CSS选择器优先顺序 id选">
+<meta name="twitter:image" content="http://cdn.alloyteam.com/wp-content/uploads/2016/05/%E4%BC%AA%E7%B1%BB.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/11/2018.04.11恶补CSS系列(二)/">
+
+
+
+
+
+  <title>恶补CSS系列(二) | 胭脂不倦?</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">胭脂不倦?</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            關於
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/11/2018.04.11恶补CSS系列(二)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胭脂好">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胭脂不倦?">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">恶补CSS系列(二)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-11T22:22:22+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="HTML-css-javascript是前端三板斧"><a href="#HTML-css-javascript是前端三板斧" class="headerlink" title="HTML,css,javascript是前端三板斧"></a>HTML,css,javascript是前端三板斧</h4><blockquote>
+<h3 id="过去一段时间里面-我过分注重javascript-虽然现在也不咋样-哭泣脸-😭😭😭-闭包-es6-OOP-面向对象-框架-react-vue-http协议-等知识-忽略了太多的css基础-布局-等知识-导致有些基础的题目甚至答不上来-错过一些好的工作岗位-迫切总结自己薄弱项系列"><a href="#过去一段时间里面-我过分注重javascript-虽然现在也不咋样-哭泣脸-😭😭😭-闭包-es6-OOP-面向对象-框架-react-vue-http协议-等知识-忽略了太多的css基础-布局-等知识-导致有些基础的题目甚至答不上来-错过一些好的工作岗位-迫切总结自己薄弱项系列" class="headerlink" title="过去一段时间里面,我过分注重javascript(虽然现在也不咋样,哭泣脸 😭😭😭 ),闭包,es6,OOP (面向对象) ,框架 (react,vue),http协议,等知识,忽略了太多的css基础,布局,等知识,导致有些基础的题目甚至答不上来,错过一些好的工作岗位,迫切总结自己薄弱项系列."></a>过去一段时间里面,我过分注重javascript(虽然现在也不咋样,哭泣脸 😭😭😭 ),闭包,es6,OOP (面向对象) ,框架 (react,vue),http协议,等知识,忽略了太多的css基础,布局,等知识,导致有些基础的题目甚至答不上来,错过一些好的工作岗位,迫切总结自己薄弱项系列.</h3></blockquote>
+<hr>
+<h2 id="恶补CSS系列之CSS选择器优先顺序"><a href="#恶补CSS系列之CSS选择器优先顺序" class="headerlink" title="恶补CSS系列之CSS选择器优先顺序"></a>恶补CSS系列之CSS选择器优先顺序</h2><ul>
+<li><h5 id="id选择器-myid-强制指定这个人"><a href="#id选择器-myid-强制指定这个人" class="headerlink" title="id选择器( #myid ) // 强制指定这个人"></a>id选择器<code>( #myid )</code> // 强制指定这个人</h5></li>
+<li><h5 id="类选择器-myclassname-指定这个人名"><a href="#类选择器-myclassname-指定这个人名" class="headerlink" title="类选择器( .myclassname ) // 指定这个人名"></a>类选择器<code>( .myclassname )</code> // 指定这个人名</h5></li>
+<li><h5 id="标签选择器-div-h1-p-ul-li-指定某一个人类人"><a href="#标签选择器-div-h1-p-ul-li-指定某一个人类人" class="headerlink" title="标签选择器( div,h1,p,ul,li ) // 指定某一个人类人"></a>标签选择器<code>( div,h1,p,ul,li )</code> // 指定某一个人类人</h5></li>
+<li><h5 id="相邻选择器-h1-p-兄弟关系"><a href="#相邻选择器-h1-p-兄弟关系" class="headerlink" title="相邻选择器( h1+p )  // 兄弟关系"></a>相邻选择器<code>( h1+p )</code>  // 兄弟关系</h5></li>
+<li><h5 id="子代选择器-ul-gt-li-父子关系"><a href="#子代选择器-ul-gt-li-父子关系" class="headerlink" title="子代选择器( ul&gt;li ) // 父子关系"></a>子代选择器<code>( ul&gt;li )</code> // 父子关系</h5></li>
+<li><h5 id="后代选择器-li-a-非父子关系"><a href="#后代选择器-li-a-非父子关系" class="headerlink" title="后代选择器( li a ) // 非父子关系"></a>后代选择器<code>( li a )</code> // 非父子关系</h5></li>
+<li><h5 id="通配符选择器-一般做reset-css-会用到"><a href="#通配符选择器-一般做reset-css-会用到" class="headerlink" title="通配符选择器( * )  // 一般做reset.css 会用到"></a>通配符选择器<code>( * )</code>  // 一般做reset.css 会用到</h5></li>
+<li><h5 id="属性选择器-a-rel-quot-external-quot-很少用到"><a href="#属性选择器-a-rel-quot-external-quot-很少用到" class="headerlink" title="属性选择器( a[rel=&quot;external&quot;] ) // 很少用到"></a>属性选择器<code>( a[rel=&quot;external&quot;] )</code> // 很少用到</h5></li>
+<li><h5 id="伪类选择器-a-hover-li-nth-child-3-单冒号为-伪类元素-双冒号为伪元素"><a href="#伪类选择器-a-hover-li-nth-child-3-单冒号为-伪类元素-双冒号为伪元素" class="headerlink" title="伪类选择器( a:hover;  li:nth-child(3) ) // 单冒号为:伪类元素, ::双冒号为伪元素"></a>伪类选择器<code>( a:hover;  li:nth-child(3) )</code> // 单冒号为:伪类元素, ::双冒号为伪元素</h5></li>
+</ul>
+<hr>
+<h2 id="恶补CSS系列之伪元素和伪类元素"><a href="#恶补CSS系列之伪元素和伪类元素" class="headerlink" title="恶补CSS系列之伪元素和伪类元素"></a>恶补CSS系列之伪元素和伪类元素</h2><p>参考自<a href="https://kb.cnblogs.com/page/545911/" target="_blank" rel="noopener">总结伪类与伪元素</a><br>下面是根据用途分类的伪类总结图和根据冒号分类的伪元素总结图：</p>
+<center><br><br><img src="http://cdn.alloyteam.com/wp-content/uploads/2016/05/%E4%BC%AA%E7%B1%BB.png" width="60%"><br><br><img src="http://cdn.alloyteam.com/wp-content/uploads/2016/05/%E4%BC%AA%E5%85%83%E7%B4%A0.png" width="60%"><br><br></center>
+
+<h4 id="伪类元素"><a href="#伪类元素" class="headerlink" title="伪类元素"></a>伪类元素</h4><p>一般用于筛选一些元素经常用得比较多的是 <code>:first-child</code>、<code>:last-child</code>、<code>:nth-child</code>等 </p>
+<h4 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h4><p>用得最多当然是清除浮动</p>
+<hr>
+<h2 id="恶补CSS系列之清除浮动"><a href="#恶补CSS系列之清除浮动" class="headerlink" title="恶补CSS系列之清除浮动"></a>恶补CSS系列之清除浮动</h2><p>参考自<a href="https://www.cnblogs.com/lhb25/p/story-of-clear-float.html" target="_blank" rel="noopener">前端精选文摘：那些年我们一起清除过的浮动</a></p>
+<blockquote>
+<p>网上的文章也有很多这里我就不一一阐述了,具体了解点击上文<br>这里只推荐相对完美兼容的方法</p>
+</blockquote>
+<h4 id="使用CSS的-after伪元素"><a href="#使用CSS的-after伪元素" class="headerlink" title="使用CSS的:after伪元素"></a>使用CSS的:after伪元素</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"news clearfix"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"news-pic.jpg"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>some text<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.news</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: gray;</span><br><span class="line">  <span class="attribute">border</span>: solid <span class="number">1px</span> black;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="selector-class">.news</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="selector-class">.news</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>:<span class="string">"\200B"</span></span><br><span class="line">  display: block;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">  <span class="attribute">visibility</span>: hidden;  </span><br><span class="line">  &#125;</span><br><span class="line"><span class="selector-class">.clearfix</span> &#123;</span><br><span class="line">  <span class="comment">/* 触发 hasLayout */</span></span><br><span class="line">  <span class="attribute">zoom</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="恶补CSS系列之移动端实现1px"><a href="#恶补CSS系列之移动端实现1px" class="headerlink" title="恶补CSS系列之移动端实现1px;"></a>恶补CSS系列之移动端实现1px;</h2><p>参考自 <a href="https://www.jianshu.com/p/7e63f5a32636" target="_blank" rel="noopener">7 种方法解决移动端Retina屏幕1px边框问题</a><br>参考自 <a href="https://www.cnblogs.com/wangdan0915/p/7527676.html" target="_blank" rel="noopener">解决移动端1px边框问题的几种方法</a></p>
+<h3 id="造成边框变粗的原因"><a href="#造成边框变粗的原因" class="headerlink" title="造成边框变粗的原因"></a>造成边框变粗的原因</h3><p>其实这个原因很简单，因为css中的1px并不等于移动设备的1px，这些由于不同的手机有不同的像素密度。在window对象中有一个devicePixelRatio属性，他可以反应css中的像素与设备的像素比。</p>
+<blockquote>
+<p>devicePixelRatio的官方的定义为：设备物理像素和设备独立像素的比例，也就是 devicePixelRatio = 物理像素 / 独立像素。</p>
+</blockquote>
+<p>### </p>
+<ul>
+<li><h3 id="方法比较多-这里只介绍一种相对完美兼容性的方法"><a href="#方法比较多-这里只介绍一种相对完美兼容性的方法" class="headerlink" title="方法比较多,这里只介绍一种相对完美兼容性的方法"></a>方法比较多,这里只介绍一种相对完美兼容性的方法</h3></li>
+</ul>
+<h4 id="伪类-transform-实现"><a href="#伪类-transform-实现" class="headerlink" title="伪类 + transform 实现"></a>伪类 + transform 实现</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border-1px</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">border</span>:none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.border-1px</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">  <span class="attribute">display </span>:block;</span><br><span class="line">  <span class="attribute">position </span>:absolute;</span><br><span class="line">  <span class="attribute">bottom </span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left </span>:<span class="number">0</span> ;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">border-top</span>:<span class="number">1px</span> solid $color;</span><br><span class="line">  <span class="attribute">content </span>:<span class="string">' '</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 判断这个dpr的比例 */</span></span><br><span class="line">@<span class="keyword">media</span> (-webkit-min-device-pixel-ratio: <span class="number">1.5</span>),(min-device-pixel-ratio:<span class="number">1.5</span>)</span><br><span class="line">.border-<span class="number">1px</span>&#123;</span><br><span class="line">  &amp;<span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">   <span class="attribute">-webkit-transform</span>:<span class="built_in">scaleY</span>(0.7)</span><br><span class="line">   transform:<span class="built_in">scaleY</span>(0.7);  </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> (-webkit-min-device-pixel-ratio: <span class="number">2</span>),(min-device-pixel-ratio:<span class="number">2</span>)</span><br><span class="line"> .border-<span class="number">1px</span>&#123;</span><br><span class="line">  &amp;<span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">   <span class="attribute">-webkit-transform</span>:<span class="built_in">scaleY</span>(0.5)</span><br><span class="line">   transform:<span class="built_in">scaleY</span>(0.5); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="恶补CSS系列之border、圆形、三角形"><a href="#恶补CSS系列之border、圆形、三角形" class="headerlink" title="恶补CSS系列之border、圆形、三角形;"></a>恶补CSS系列之border、圆形、三角形;</h2><p><a href="http://www.jb51.net/css/41448.html" target="_blank" rel="noopener">纯CSS画的基本图形</a></p>
+<h3 id="圆"><a href="#圆" class="headerlink" title="圆"></a><code>圆</code></h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#circle</span> &#123; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">background</span>: red; </span><br><span class="line">  <span class="attribute">-moz-border-radius</span>: <span class="number">50px</span>; </span><br><span class="line">  <span class="attribute">-webkit-border-radius</span>: <span class="number">50px</span>; </span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50px</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三角"><a href="#三角" class="headerlink" title="三角"></a><code>三角</code></h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#triangle-up</span> &#123; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">50px</span> solid transparent; </span><br><span class="line">  <span class="attribute">border-right</span>: <span class="number">50px</span> solid transparent; </span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">100px</span> solid red; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/一八年四月/" rel="tag"># 一八年四月</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/移动端/" rel="tag"># 移动端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/10/2018.04.10恶补CSS系列(一)/" rel="next" title="恶补CSS系列(一)">
+                <i class="fa fa-chevron-left"></i> 恶补CSS系列(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2099/12/31/road/" rel="prev" title="load?坑？(持续更新)">
+                load?坑？(持续更新) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/head.jpg" alt="胭脂好">
+            
+              <p class="site-author-name" itemprop="name">胭脂好</p>
+              <p class="site-description motion-element" itemprop="description">知行合一</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-css-javascript是前端三板斧"><span class="nav-number">1.</span> <span class="nav-text">HTML,css,javascript是前端三板斧</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#过去一段时间里面-我过分注重javascript-虽然现在也不咋样-哭泣脸-😭😭😭-闭包-es6-OOP-面向对象-框架-react-vue-http协议-等知识-忽略了太多的css基础-布局-等知识-导致有些基础的题目甚至答不上来-错过一些好的工作岗位-迫切总结自己薄弱项系列"><span class="nav-number"></span> <span class="nav-text">过去一段时间里面,我过分注重javascript(虽然现在也不咋样,哭泣脸 😭😭😭 ),闭包,es6,OOP (面向对象) ,框架 (react,vue),http协议,等知识,忽略了太多的css基础,布局,等知识,导致有些基础的题目甚至答不上来,错过一些好的工作岗位,迫切总结自己薄弱项系列.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恶补CSS系列之CSS选择器优先顺序"><span class="nav-number"></span> <span class="nav-text">恶补CSS系列之CSS选择器优先顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#id选择器-myid-强制指定这个人"><span class="nav-number">0.1.</span> <span class="nav-text">id选择器( #myid ) // 强制指定这个人</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#类选择器-myclassname-指定这个人名"><span class="nav-number">0.2.</span> <span class="nav-text">类选择器( .myclassname ) // 指定这个人名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标签选择器-div-h1-p-ul-li-指定某一个人类人"><span class="nav-number">0.3.</span> <span class="nav-text">标签选择器( div,h1,p,ul,li ) // 指定某一个人类人</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相邻选择器-h1-p-兄弟关系"><span class="nav-number">0.4.</span> <span class="nav-text">相邻选择器( h1+p )  // 兄弟关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#子代选择器-ul-gt-li-父子关系"><span class="nav-number">0.5.</span> <span class="nav-text">子代选择器( ul&gt;li ) // 父子关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后代选择器-li-a-非父子关系"><span class="nav-number">0.6.</span> <span class="nav-text">后代选择器( li a ) // 非父子关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通配符选择器-一般做reset-css-会用到"><span class="nav-number">0.7.</span> <span class="nav-text">通配符选择器( * )  // 一般做reset.css 会用到</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#属性选择器-a-rel-quot-external-quot-很少用到"><span class="nav-number">0.8.</span> <span class="nav-text">属性选择器( a[rel=&quot;external&quot;] ) // 很少用到</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#伪类选择器-a-hover-li-nth-child-3-单冒号为-伪类元素-双冒号为伪元素"><span class="nav-number">0.9.</span> <span class="nav-text">伪类选择器( a:hover;  li:nth-child(3) ) // 单冒号为:伪类元素, ::双冒号为伪元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恶补CSS系列之伪元素和伪类元素"><span class="nav-number"></span> <span class="nav-text">恶补CSS系列之伪元素和伪类元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#伪类元素"><span class="nav-number">1.</span> <span class="nav-text">伪类元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪元素"><span class="nav-number">2.</span> <span class="nav-text">伪元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恶补CSS系列之清除浮动"><span class="nav-number"></span> <span class="nav-text">恶补CSS系列之清除浮动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用CSS的-after伪元素"><span class="nav-number">1.</span> <span class="nav-text">使用CSS的:after伪元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恶补CSS系列之移动端实现1px"><span class="nav-number"></span> <span class="nav-text">恶补CSS系列之移动端实现1px;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#造成边框变粗的原因"><span class="nav-number"></span> <span class="nav-text">造成边框变粗的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法比较多-这里只介绍一种相对完美兼容性的方法"><span class="nav-number"></span> <span class="nav-text">方法比较多,这里只介绍一种相对完美兼容性的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#伪类-transform-实现"><span class="nav-number">1.</span> <span class="nav-text">伪类 + transform 实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恶补CSS系列之border、圆形、三角形"><span class="nav-number"></span> <span class="nav-text">恶补CSS系列之border、圆形、三角形;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#圆"><span class="nav-number"></span> <span class="nav-text">圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三角"><span class="nav-number"></span> <span class="nav-text">三角</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胭脂好</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
